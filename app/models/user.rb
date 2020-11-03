@@ -4,14 +4,13 @@ class User < ApplicationRecord
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable
   
-        def self.from_omniauth(auth)
-            where(email: auth.info.email).first_or_initialize do |user|
-            user.image = auth.info.image
-            user.user_name = auth.info.name
-            user.email = auth.info.email
-            user.password = SecureRandom.hex
-            user.image = auth.info.image
-        end
+    
+    def self.from_omniauth(auth)
+      where(email: auth.info.email).first_or_initialize do |user|
+        user.image = auth.info.image
+        user.name = auth.info.name
+        user.email = auth.info.email
+        user.password = SecureRandom.hex
+      end
     end
   end
-  
