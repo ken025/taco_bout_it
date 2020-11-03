@@ -5,8 +5,10 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable, 
     :omniauthable
 
+    has_many :reviews
+    has_many :restaurants, through: :reviews
+
     def self.google_omniauth(auth)
-      #  binding.pry
       where(provider: auth["provider"], uid: auth["uid"]).first_or_create(email: auth["info"]["email"]) do |user|
         user.image = auth.info.image
         user.name = auth.info.name
