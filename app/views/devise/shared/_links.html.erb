@@ -1,17 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <ul class="nav center">
-  <li class="nav-item">
-    <a class="nav-link  btn-dark" href="/auth/google_oauth2"><img src="https://img.icons8.com/color/16/000000/google-logo.png">   Log In with Google</a>
-  </li>
-</ul>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <ul class="nav center">
-  <li class="nav-item">
-    <a class="nav-link btn-dark" href="/auth/google_oauth2"><img src="https://img.icons8.com/color/16/000000/google-logo.png">   Log In with Google</a>
-  </li>
-</ul>
 <% end %>
 
 
@@ -24,7 +14,9 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end %>
+    <ul class="nav center">
+      <li class="nav-item">
+          <a class="nav-link btn-dark" href="/users/auth/google_oauth2"><img src="https://img.icons8.com/color/16/000000/google-logo.png">   Log In with Google</a>
+      </li>
+    </ul>
 <% end %>
