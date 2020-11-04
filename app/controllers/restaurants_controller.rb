@@ -15,9 +15,9 @@ class RestaurantsController < ApplicationController
       end 
 
       def create
-        binding.pry
+        # binding.pry
         @restaurant = Restaurant.new(restaurant_params)
-        binding.pry
+        # binding.pry
         if @restaurant.save
           redirect_to restaurant_path(@restaurant)
         end
