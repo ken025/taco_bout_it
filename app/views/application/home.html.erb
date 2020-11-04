@@ -1,6 +1,9 @@
-<div class="center">
+<div class="col-xs-1 text-center">
 <div class="fade-in"><img class="edit-image" src=https://www.freelogodesign.org/file/app/client/thumb/dcb5fc67-e9fa-4287-9288-49cfbcf898b8_200x200.png?1604445793414"; style="width: 500px; height: 500px; margin: 0px;"></div><br />
-
+ <% if user_signed_in? %>
+ <h2>Hello, <a href="/"><%= current_user.name%></a> </h2>
+ <% else %>
 <p>Review your favorite restaurants and discover restaurants around your area!</p>
+<% end %>
 </div>
 
