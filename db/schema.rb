@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_035612) do
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "message"
     t.float "stars"
   end
 
