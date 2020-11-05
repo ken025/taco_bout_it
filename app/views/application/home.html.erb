@@ -1,8 +1,12 @@
 <div class="col-xs-1 text-center">
-<div class="fade-in"><img class="edit-image" src=https://www.freelogodesign.org/file/app/client/thumb/dcb5fc67-e9fa-4287-9288-49cfbcf898b8_200x200.png?1604445793414"; style="width: 500px; height: 500px; margin: 0px;"></div><br />
  <% if user_signed_in? %>
- <h2>Hello, <a href="/"><%= current_user.name%></a> </h2>
+ <h2>Hello, <%= link_to current_user.name, edit_user_registration_path %> </h2>
+ <div class="fade-in"><img class="edit-image" src=https://www.freelogodesign.org/file/app/client/thumb/dcb5fc67-e9fa-4287-9288-49cfbcf898b8_200x200.png?1604445793414"; style="width: 500px; height: 500px; margin: 0px;"></div><br />
+ <p><%= link_to "Enter a New Restaurant", new_restaurant_path %></p>
+ <p><%= link_to "See Restaurants", restaurants_path %></p>
+ <p><%= link_to "See Reviews", reviews_path %></p>
  <% else %>
+ <div class="fade-in"><img class="edit-image" src=https://www.freelogodesign.org/file/app/client/thumb/dcb5fc67-e9fa-4287-9288-49cfbcf898b8_200x200.png?1604445793414"; style="width: 500px; height: 500px; margin: 0px;"></div><br />
 <p>Review your favorite restaurants and discover restaurants around your area!</p>
 <% end %>
 </div>

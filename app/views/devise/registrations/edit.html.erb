@@ -2,8 +2,15 @@
 <div class="card border-light mb-3">
 
 <div class="card-body">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1> Profile: </h1>
 
+<div class="field"> 
+<%= image_tag current_user.image, class: "img-fluid rounded-circle", style: "height: 2rem"%>
+<%=current_user.name %>
+<p> Member Since: <%= current_user.created_at.strftime("%b-%e-%Y") %></p>
+ </div> <br />
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

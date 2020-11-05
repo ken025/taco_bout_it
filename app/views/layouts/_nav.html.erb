@@ -4,15 +4,17 @@
   <div class="navbar-collapse collapse show" id="navbarColor01" style="">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-    <% if user_signed_in? %>
-        <li class="nav-item"><%= link_to 'Edit your account', edit_user_registration_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
 
-    <% else %>
-        <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
-        
-    <%end %>
-</ul>
-</div>
+      <% if user_signed_in? %>
+       <li><%= image_tag current_user.image, class: "img-fluid rounded-circle", style: "height: 2rem"%></li>
+       <li class="nav-item"><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+
+      <% else %>
+          <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
+          
+      <%end %>
+    </ul>
+    <img src=https://www.freelogodesign.org/file/app/client/thumb/dcb5fc67-e9fa-4287-9288-49cfbcf898b8_200x200.png?1604445793414"; style="width: 50px; height: 50px; margin: 0px;">
+  </div>
 </nav>
