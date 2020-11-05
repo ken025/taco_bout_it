@@ -1,9 +1,12 @@
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<div class="field">
+<h2> Restaurant: <%= @restaurant.name %> </h2>
+<h3> City: <%= @restaurant.location %></h3>
+<ul>
+  <% @restaurant.reviews.each do | rv | %>
+    <li><%= rv.message %> |  <%= rv.stars %></li>
+  <% end %>
+</ul>
+</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @restaurant.location %>
-</p>
+<h6><%= link_to "View Reviews",restaurant_reviews_path(@restaurant) %></h6>
+<h6><%= link_to("Delete Restaurant", @restaurant, method: :delete, data:{confirm: "Do you really want to delete this?"}) %></h6>

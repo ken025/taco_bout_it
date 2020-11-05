@@ -1,0 +1,14 @@
+<% if @restaurant %>
+    <h1><%= link_to @restaurant.name, restaurant_path(@restaurant
+    )  %>'s Reviews:</h1>
+<% else %>
+    <h1>Here Are The Reviews:</h1>
+<% end %>
+
+<ul>
+<% @reviews.each do |i| %>
+<li> <%= i.message %> | <%= i.stars %> &#9733</li>
+    <%# <li><%= link_to i.message, restaurant_review_path(@restaurant, i) </li> %>
+<% end %>
+</ul>
+<p><%= link_to "Enter a New Review", new_review_path %></p>

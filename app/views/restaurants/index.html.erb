@@ -1,0 +1,9 @@
+<div class="field">
+<ul>
+    <% @restaurants.each do | r | %>
+    <li><%= link_to r.name, r %></li>
+    <% end %>
+</ul>
+
+<p><%= link_to "Add New Restaurant", new_restaurant_path %></p>
+</div>

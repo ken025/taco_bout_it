@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
-    <%= @user.name %>
+    <%= current_user.name%>
+    <%= Member since: current_user.created_at.strftime("%b-%e-%Y")%>
 <% end %>
 <p>Is a Native Neww Yorkerrrr</p>
