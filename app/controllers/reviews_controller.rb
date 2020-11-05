@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :set_review, only: [:show]
+    before_action :set_review,  only: [:show]
 
     def index
       if params[:restaurant_id]
@@ -21,20 +21,28 @@ class ReviewsController < ApplicationController
         set_restaurant
         @review = @restaurant.reviews.build
       else
-        @ieview = Review.new
+        @review = Review.new
       end
     end
   
     def create
+      binding.pry
+      
       if params[:restaurant_id]
         set_restaurant
         @review = @restaurant.reviews.build(review_params)
+        @review.user_id =  current_user.id
       else
-        @review = Review.new(review_params)
-      end
+        @review = current_user.reviews.build(review_params)
+    # binding.pry
+       end
       if @review.save
         if @restaurant
-          redirect_to restaurant_review_path(@restaurant, @review)
+        redirect_to review_path(@review)
+      
+        # binding.pry
+        # if @restaurant
+          # redirect_to restaurant_review_path(@restaurant, @review)
         else
           redirect_to @review
         end
@@ -59,12 +67,10 @@ class ReviewsController < ApplicationController
     end
   
     def set_review
-      @ieview = Review.find_by_id(params[:id])
+      @review = Review.find_by_id(params[:id])
     end
   
     def review_params
-      params.require(:review).permit(:message, :stars :restaurant_id)
-    end
-  
-  end
-end 
+      params.require(:review).permit(:message, :stars, :review_id)
+    end 
+  end 

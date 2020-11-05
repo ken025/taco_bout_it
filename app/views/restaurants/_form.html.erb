@@ -1,15 +1,23 @@
-<%= form_with model: @restaurant, local: true do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create Restaurant", class: "btn btn-outline-secondary btn-sm"%>
-  </div>
+<% if @restaurant.errors.any? %>
+        <h5 class="error"><%= @restaurant.errors.full_messages.to_sentence %></h5>
 <% end %>
+
+<%= form_with model: @restaurant, local: true do |f| %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name, class: @restaurant.errors.any? ? "error-field" : nil %>
+
+    <%= f.label :location, "City:" %>
+    <%= f.text_field :location %>
+ 
+ <h4> Review Restaurant:</h4>
+  <%= f.fields_for :reviews, @restaurant.reviews.build do | r | %>
+
+    <%= r.label :message, "Review:" %>
+    <%= r.text_field :message %>
+
+    <%= r.label :stars %>
+    <%= r.number_field :stars%>
+
+    <% end %>
+    <%= f.submit "Add Restaurant", class: "btn btn-outline-secondary btn-sm"%>
+  <% end %>
