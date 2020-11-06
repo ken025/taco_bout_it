@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
       end
   
       def show
+        set_restaurant
       end
   
       def new
