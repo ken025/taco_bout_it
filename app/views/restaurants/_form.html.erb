@@ -8,16 +8,8 @@
 
     <%= f.label :location, "City:" %>
     <%= f.text_field :location %>
- 
- <h4> Review Restaurant:</h4>
-  <%= f.fields_for :reviews, @restaurant.reviews.build do | r | %>
 
-    <%= r.label :message, "Review:" %>
-    <%= r.text_field :message %>
 
-    <%= r.label :stars %>
-    <%= r.number_field :stars%>
 
-    <% end %>
     <%= f.submit "Add Restaurant", class: "btn btn-outline-secondary btn-sm"%>
   <% end %>
