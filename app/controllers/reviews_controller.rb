@@ -1,19 +1,18 @@
 class ReviewsController < ApplicationController
-  before_action :set_review,  only: [:show]
+  before_action :set_restaurant, only: [:show, :edit, :update, :new, :create]
+  before_action :set_review,  only: [:show, :edit, :update, :destroy]
+
 
   def index
     if params[:restaurant_id]
       set_restaurant
       @reviews = @restaurant.reviews
     else
-      @reviews = Review.all
+      @reviews = Review.order(:updated_at || :created_at).reverse
     end
   end
 
   def show
-    if params[:restaurant_id]
-      set_restaurant
-    end
   end
 
   def new
@@ -26,7 +25,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     
     if params[:restaurant_id]
       set_restaurant
@@ -52,12 +51,27 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    if !current_user.id = @review.user_id
+    redirect_to restaurant_review_path
+    end 
   end
 
   def update
+    if @review
+      @review.update(review_params)
+      if @review.errors.any?
+        render "edit"
+      else
+        redirect_to restaurant_review_path
+      end
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @review.destroy
+    redirect_to restaurant_reviews_path
   end
 
   private
@@ -71,106 +85,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:message, :stars, :review_id)
+    params.require(:review).permit(:message, :stars, :id)
   end 
 end 
-
-# class ReviewsController < ApplicationController
-#     before_action :set_review,  only: [:show]
-
-#     def index
-#       if params[:restaurant_id]
-#         @reviews = set_restaurant.reviews
-#         # set_restaurant
-#         # @reviews = @restaurant.reviews
-#       else
-#         @reviews = Review.all
-#       end
-#     end
-  
-#     def show
-#       if params[:restaurant_id]
-#         @review = set_restaurant.reviews.find(params[:id])
-#         # set_restaurant
-#       else 
-#         set_review
-#       end
-#     end
-  
-#     def new
-#       if params[:restaurant_id] && !Restaurant.exists?(params[:restaurant_id])
-#         redirect_to restaurants_path
-#         # set_restaurant
-#         # @review = @restaurant.reviews.build
-#       else
-#         @review = Review.new[restaurant_id: params[:restaurant_id]]
-#       end
-#     end
-  
-#     def create
-#       # binding.pry
-#       @review = Review.new(review_params)
-#       @review.save
-#       redirect_to review_path(@review)
-
-#     #   if params[:restaurant_id]
-#     #     set_restaurant
-#     #     @review = @restaurant.reviews.build(review_params)
-#     #     @review.user_id =  current_user.id
-#     #   else
-#     #     @review = current_user.reviews.build(review_params)
-#     # # binding.pry
-#     #    end
-#     #   if @review.save
-#     #     if @restaurant
-#     #     redirect_to review_path(@review)
-      
-#     #     # binding.pry
-#     #     # if @restaurant
-#     #       # redirect_to restaurant_review_path(@restaurant, @review)
-#     #     else
-#     #       redirect_to @review
-#     #     end
-#     #   else
-#     #     render :new
-#     #   end
-#      end
-  
-#     def edit
-#       if params[:restaurant_id]
-#         restaurant = Restaurant.find_by(id: params[:restaurant_id])
-#         if restaurant.nil?
-#           redirect_to restaurants_path
-#         else
-#           @review = restaurant.reviews.find_by(id: params[:id])
-#           redirect_to restaurant_reviews_path(restaurant), alert: "review not found." if @review.nil?
-#         end
-#       else
-#         @review = Review.find(params[:id])
-#       end
-#     end
-    
-  
-#     def update
-#       @review = Review.find(params[:id])
-#       @review.update(review_params)
-#       redirect_to review_path(@review)
-#     end
-  
-#     def destroy
-#     end
-  
-#     private
-  
-#     def set_restaurant
-#       @restaurant = Restaurant.find_by_id(params[:restaurant_id])
-#     end
-  
-#     def set_review
-#       @review = Review.find_by_id(params[:id])
-#     end
-  
-#     def review_params
-#       params.require(:review).permit(:message, :stars, :review_id)
-#     end 
-#   end 
