@@ -1,12 +1,4 @@
-<% if @review.errors.any? %>
-        <h5 class="error"><%= @review.errors.full_messages.to_sentence %></h5>
-<% end %>
-
-<%= form_with model: [@restaurant, @review], local: true do | r | %>
-    <%= r.label :message, "Review:" %>
-    <%= r.text_area :message %>
-    <%= r.label :stars %>
-    <%= r.number_field :stars, min: "0", max: "5"%> 
-
-        <%= r.submit %>
-<% end %>
+  <div class="field">
+  <h1> Review: </h1>
+   <%= render 'form' %>
+   </div>
