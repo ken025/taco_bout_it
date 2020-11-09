@@ -8,7 +8,6 @@
       <% if user_signed_in? %>
        <li><%= image_tag current_user.image, class: "img-fluid rounded-circle", style: "height: 2rem"%></li>
        <li class="nav-item"><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-
       <% else %>
           <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
