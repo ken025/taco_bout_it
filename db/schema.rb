@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_154203) do
+ActiveRecord::Schema.define(version: 2020_11_08_161554) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_154203) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string "username"
-    t.string "image"
+    t.string "image", default: "https://www.freelogodesign.org/file/app/client/thumb/879046d9-da95-4431-b9f4-12aa26e6e1a3_200x200.png?1604852352065"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
