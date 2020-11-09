@@ -2,9 +2,18 @@
     <h1><%= @restaurant.name %>'s reviews:</h1>
 <% end %>
 
-<blockquote class="blockquote text-right">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-<h2>Stars: <%= @review.stars %></h2>
-<h3> Review: <%= @review.message %></h3>
+<blockquote class="blockquote">
+<br /> <ul>
+    <% @restaurant.reviews.each do |i| %>
+        <div class="card text-white bg-dark mb-3" style="width: 90rem;">
+        <div class="card-body">
+
+            <p class="card-text"> <%= i.message %> | <%= i.stars %> &#9733</p>
+            <footer class="blockquote-footer text-right"> <%= i.created_at.strftime("%b-%e-%Y") %></footer><br />
+
+            <h6><%= link_to "Edit Review", edit_restaurant_review_path(@restaurant, @review)%> | <%= link_to("Delete", restaurant_review_path(@restaurant, @review), method: :delete, data:{confirm: "Are you sure?"}) %></h6>
+        </div>
+        </div>
+    <% end %>
+    </ul>
 </blockquote>

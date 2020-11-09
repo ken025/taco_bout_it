@@ -1,16 +1,28 @@
-<blockquote class="blockquote">
-
 <% if @restaurant %>
     <h1><%= link_to @restaurant.name, restaurant_path(@restaurant) %>'s Reviews:</h1>
 <% else %>
     <h1>Here Are The Reviews:</h1>
 <% end %>
 
+      <option selected="">Stars</option>
+        <select name="restaurant[review_id]" id="restaurant_review_id">
+                <% Review.all.uniq.each do |res| %>
+                <option value="<%= res.id %>"><%= res.stars %></option>
+            <% end %>
+        </select>
 
-    <ul>
-        <% @reviews.each do |i| %>
-        <li> <%= i.message %> | <%= i.stars %> &#9733</li>
-        <footer class="blockquote-footer"> <%= i.created_at.strftime("%b-%e-%Y") %></footer><br />
+<blockquote class="blockquote">
+   <br /> <ul>
+        <% @review.each do |i| %>
+        <div class="card text-white bg-dark mb-3" style="width: 90rem;">
+        <div class="card-body">
+
+        <p class="card-text"> <%= i.message %> | <%= i.stars %> &#9733</p>
+        <footer class="blockquote-footer text-right"> <%= i.created_at.strftime("%b-%e-%Y") %></footer><br />
+       
+<h6> <%= link_to "Edit Review", edit_restaurant_review_path(i)%> | <%= link_to("Delete Review", @review, method: :delete, data:{confirm: "Do you really want to delete this?"}) %></h6>
+ </div>
+</div>
         <% end %>
     </ul>
 </blockquote>

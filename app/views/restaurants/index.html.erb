@@ -1,9 +1,23 @@
-<div class="field">
-<ul>
-    <% @restaurants.each do | r | %>
-    <li><%= link_to r.name, r %></li>
-    <% end %>
-</ul>
+<form action="/restaurants" method="GET">
+    <select name="filter_option" onchange="this.form.submit()">
+      <option value="">City</option>
+      <% @restaurants.each do |rest| %>
+        <option value="<%= rest.location %>"><%= rest.location %></option>
+      <% end %>
+    </select>
+</form><br />
 
-<p><%= link_to "Add New Restaurant", new_restaurant_path %></p>
+ <div class="card mb-3" style=" height: 60px; border-color: #80c2c4">
+  <div class="card-body">
+  <h2 class="text-center"> Restaurants: </h2><br />
+  </div>
+</div>
+
+
+<% @restaurants.each do |res| %> 
+<div class="card mb-2" style="width: 90rem; height: 60px; background-color: #80c2c4">
+    <div class="card-body text-center">
+    <p class="card-text"><%= link_to "#{res.name} | #{res.location}", res %></p><br />
+<% end %>
+    </div>
 </div>

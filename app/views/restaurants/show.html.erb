@@ -1,14 +1,18 @@
-<div class="field">
-  <h2> Restaurant: <%= @restaurant.name %> </h2>
-  <h3> City: <%= @restaurant.location %></h3>
-  <ul>
-    <% @restaurant.reviews.each do | rv | %>
-      <li><%= rv.message %> |  <%= rv.stars %></li>
-    <% end %>
-  </ul>
-</div>
+<div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Restaurant: <%= @restaurant.name %></h2>
+      <h4 class="card-subtitle mb-2 text-muted">City: <%= @restaurant.location %></h4>
 
+        <ul>
+          <% @restaurant.reviews.each do | rv | %>
+            <li><%= rv.message %> |  <%= rv.stars %></li>
+          <% end %>
+        </ul>
+    </div>
 
-<h6><%= link_to "Enter Review", new_restaurant_review_path(@restaurant), class: "btn btn-outline-secondary btn-sm" %></h6>
-<h6><%= link_to "View Reviews",restaurant_reviews_path(@restaurant), class: "btn btn-outline-secondary btn-sm" %></h6>
-<h6 class="text-danger"><%= link_to("Delete Restaurant", @restaurant, method: :delete, data:{confirm: "Do you really want to delete this?"}) %></h6>
+  <h6><%= link_to "Enter Review", new_restaurant_review_path(@restaurant), class: "btn btn-outline-secondary btn-sm" %></h6>
+  <h6><%= link_to "View Reviews",restaurant_review_path(@restaurant), class: "btn btn-outline-secondary btn-sm" %></h6>
+</div><br />
+
+<h6> <%= link_to "Update Restaurant's Info", edit_restaurant_path(@restaurant)%> </h6>
+<h6><%= link_to("Delete Restaurant", @restaurant, method: :delete, data:{confirm: "Do you really want to delete this?"}) %></h6>
