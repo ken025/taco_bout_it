@@ -1,25 +1,20 @@
-# README
+# Welcome to: Lets Taco 'Bout It
+A web application designed to give users the ability to add their favorite restaurants and review them or just browse through the available restaurants and their reviews. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- The users will be able to create an account to access the application 
+- Once the account is created, they will be able to add restaurant and reviews and edit and delete only their own
+- They will be able to access all other restaurants created and look through their reviews
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+  - Navigate to https://github.com/ken025/taco_bout_it
+  - Click the green **Code** button and copy the link by clicking on the **clipboard**
+  - Once the repository is cloned: run `bundle install` to load the gems and dependencies and then `rake db:migrate` to have access to the database
+  -To access the web application run `rails s` and click the link provided to run your local host
 
-* System dependencies
+## Contributing
 
-* Configuration
+Bug reports and pull requests are welcomed.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# taco_bout_it
+## License
+This code is free to use under the terms of the [MIT License](https://opensource.org/licenses/MIT).

@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
       end
   
       def show
-        set_restaurant
+        # set_restaurant
       end
   
       def new
@@ -18,10 +18,11 @@ class RestaurantsController < ApplicationController
       def create
           # binding.pry
         @restaurant = current_user.restaurants.build(restaurant_params)
-
         #  binding.pry
         if @restaurant.save
           redirect_to restaurant_path(@restaurant)
+        else
+          render :new, notice: "Could not create restaurant"
         end
       end
   
@@ -37,7 +38,7 @@ class RestaurantsController < ApplicationController
             redirect_to @restaurant
           end
         else
-          render "edit"
+          render "edit", notice: "Could not edit this restaurant"
         end
       end
   
