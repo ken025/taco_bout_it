@@ -8,16 +8,18 @@
 </form><br />
 
  <div class="card mb-3" style=" height: 60px; border-color: #80c2c4">
-  <div class="card-body">
-  <h2 class="text-center"> Restaurants: </h2><br />
-  </div>
-</div>
-
-
-<% @restaurants.each do |res| %> 
-<div class="card mb-2" style="width: 90rem; height: 60px; background-color: #80c2c4">
-    <div class="card-body text-center">
-    <p class="card-text"><%= link_to "#{res.name} | #{res.location}", res %></p><br />
-<% end %>
+    <div class="card-body">
+      <h2 class="text-center"> Restaurants: </h2><br />
     </div>
 </div>
+
+<% @restaurants.each do |res| %> 
+  <div class="card mb-3" style="width: 100%; height: 60px; background-color: #80c2c4">
+    <div class="card-body text-center">
+    <p class="card-text"><%= link_to "#{res.name.titleize}  |  #{res.location}  |  #{res.reviews.average(:stars)}", res %>&#9733</p>
+     </div><br />
+      </div>
+<% end %><br />
+   
+
+  <p class="text-center"><%= link_to "Add a New Restaurant", new_restaurant_path %></p>
