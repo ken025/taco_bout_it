@@ -1,17 +1,18 @@
 <% if @restaurant %>
-    <h1><%= @restaurant.name %>'s reviews:</h1>
+    <h1><%= link_to @restaurant.name, restaurant_path(@restaurant) %>'s reviews:</h1>
 <% end %>
 
 <blockquote class="blockquote">
 <br /> <ul>
-    <% @restaurant.reviews.each do |i| %>
+    <% @restaurant.reviews.each do | i | %>
         <div class="card text-white bg-dark mb-3" style="width: 90rem;">
         <div class="card-body">
 
             <p class="card-text"> <%= i.message %> | <%= i.stars %> &#9733</p>
             <footer class="blockquote-footer text-right"> <%= i.created_at.strftime("%b-%e-%Y") %></footer><br />
-
-            <h6><%= link_to "Edit Review", edit_restaurant_review_path(@restaurant, @review)%> | <%= link_to("Delete", restaurant_review_path(@restaurant, @review), method: :delete, data:{confirm: "Are you sure?"}) %></h6>
+            <% if i.user.id == current_user.id %> 
+            <h6><%= link_to "Edit Review", edit_restaurant_review_path(@restaurant, i)%> | <%= link_to("Delete", restaurant_review_path(@restaurant, i), method: :delete, data:{confirm: "Are you sure?"}) %></h6>
+             <% end %>
         </div>
         </div>
     <% end %>

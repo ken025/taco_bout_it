@@ -15,6 +15,10 @@
           <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="field">
+              <%= f.label :name, "Update Name"%><br />
+              <%= f.text_field :name, autocomplete: "name"%>
+
+            <div class="field">
                 <%= f.label :image, "Profile Pic URL" %><br />
                 <%= f.url_field :image, autocomplete: "image" %>
             </div><br />

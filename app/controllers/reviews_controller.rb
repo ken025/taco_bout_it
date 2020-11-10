@@ -37,23 +37,19 @@ class ReviewsController < ApplicationController
      end
     if @review.save
       if @restaurant
-      # redirect_to review_path(@review)
-    
-      # binding.pry
-      # if @restaurant
          redirect_to restaurant_review_path(@restaurant, @review)
       else
-        redirect_to @review
+        redirect_to @review 
       end
     else
-      render :new
+      render :new, notice: "Could not create review"
     end
   end
 
   def edit
-    if !current_user.id = @review.user_id
-    redirect_to restaurant_review_path
-    end 
+    # if !current_user.id = @review.user_id
+    # redirect_to restaurant_review_path, notice: "Unable to edit this review" 
+    # end 
   end
 
   def update
@@ -85,6 +81,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:message, :stars, :id)
+    params.require(:review).permit(:message, :stars)
   end 
 end 
