@@ -2,7 +2,8 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
     def index
-        @restaurants = Restaurant.order(:name)
+        # @restaurants = Restaurant.order(:name)
+        @restaurants = Restaurant.search(params[:search])
         handle_filters
       end
   
@@ -54,7 +55,7 @@ class RestaurantsController < ApplicationController
       end
   
       def restaurant_params
-        params.require(:restaurant).permit(:name, :location, reviews_attributes: [:id, :message, :stars, :user_id, :restaurant_id])
+        params.require(:restaurant).permit(:name, :location, :search, reviews_attributes: [:id, :message, :stars, :user_id, :restaurant_id])
       end 
     
         def handle_filters

@@ -1,11 +1,17 @@
 <form action="/restaurants" method="GET">
-    <select name="filter_option" onchange="this.form.submit()">
-      <option value="">City</option>
-      <% @restaurants.each do |rest| %>
+
+</form><br />
+
+<h4> Search by City: </h4>
+<%= form_tag(restaurants_path, method: :get) do %>
+    <select name="search">
+      <option value="">All</option>
+      <% Restaurant.all.each.uniq do |rest| %>
         <option value="<%= rest.location %>"><%= rest.location %></option>
       <% end %>
     </select>
-</form><br />
+<%= submit_tag ("Search"), class: "btn btn-outline-secondary btn-sm" %>
+<% end %>
 
  <div class="card mb-3" style=" height: 60px; border-color: #80c2c4">
     <div class="card-body">
