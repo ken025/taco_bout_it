@@ -9,7 +9,8 @@ A web application designed to give users the ability to add their favorite resta
 
   - Navigate to https://github.com/ken025/taco_bout_it
   - Click the green **Code** button and copy the link by clicking on the **clipboard**
-  - Once the repository is cloned: run `bundle install` to load the gems and dependencies and then `rake db:migrate` to have access to the database
+  - Once the repository is cloned: run `bundle install` to load the gems and dependencies
+  - Once that is done, run `rake db:migrate` to have access to the database
   -To access the web application run `rails s` and click the link provided to run your local host
 
 ## Contributing
