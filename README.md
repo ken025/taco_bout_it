@@ -19,3 +19,10 @@ Bug reports and pull requests are welcomed.
 
 ## License
 This code is free to use under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Future Plans for this Project
+
+- Make the dropdown filter of cities to render unique city names
+- Make the dropdown filter for amount of stars functional 
+- Make the option for the app to recognize the user's current location and use that information for the restaurant's location 
+- Give users the ability to follow certain restaurants 
