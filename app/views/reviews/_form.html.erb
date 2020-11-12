@@ -5,6 +5,7 @@
 <%= form_with model: [@restaurant, @review], local: true do | r | %>
     <%= r.label :message, "Review:" %>
     <%= r.text_area :message %>
+    
     <%= r.label :stars %>
     <%= r.number_field :stars, min: "0", max: "5"%> 
 

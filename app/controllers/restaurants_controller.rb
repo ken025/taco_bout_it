@@ -2,13 +2,10 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
     def index
-        # @restaurants = Restaurant.order(:name)
         @restaurants = Restaurant.search(params[:search])
-        handle_filters
       end
   
       def show
-        # set_restaurant
       end
   
       def new
@@ -56,14 +53,5 @@ class RestaurantsController < ApplicationController
   
       def restaurant_params
         params.require(:restaurant).permit(:name, :location, :search, reviews_attributes: [:id, :message, :stars, :user_id, :restaurant_id])
-      end 
-    
-        def handle_filters
-        if session[:filter_option] && session[:filter] == "Cities"
-            @restaurants = @restaurants.where(location: session[:filter_option])
-            @restaurants = @restaurants.where(location: @restaurants.pluck(:restaurant))
-        elsif session[:filter_option] && session[:filter] == "Restaurant"
-            @restaurants = @restaurants.where(location: session[:filter_option])
-        end
       end 
   end

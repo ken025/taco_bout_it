@@ -26,7 +26,6 @@ class ReviewsController < ApplicationController
 
   def create
     # binding.pry
-    
     if params[:restaurant_id]
       set_restaurant
       @review = @restaurant.reviews.build(review_params)

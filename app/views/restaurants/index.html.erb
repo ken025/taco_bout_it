@@ -1,7 +1,3 @@
-<form action="/restaurants" method="GET">
-
-</form><br />
-
 <h4> Search by City: </h4>
 <%= form_tag(restaurants_path, method: :get) do %>
     <select name="search">
@@ -23,9 +19,8 @@
   <div class="card mb-3" style="width: 100%; height: 60px; background-color: #80c2c4">
     <div class="card-body text-center">
     <p class="card-text"><%= link_to "#{res.name.titleize}  |  #{res.location}  |  #{res.reviews.average(:stars)}", res %>&#9733</p>
-     </div><br />
-      </div>
+    </div>
+  </div>
 <% end %><br />
    
-
-  <p class="text-center"><%= link_to "Add a New Restaurant", new_restaurant_path %></p>
+<p class="text-center"><%= link_to "Add a New Restaurant", new_restaurant_path %></p>
