@@ -1,5 +1,22 @@
-<% if user_signed_in? %>
-    <%= current_user.name%>
-    <%= Member since: current_user.created_at.strftime("%b-%e-%Y")%>
-<% end %>
-<p>Is a Native Neww Yorkerrrr</p>
+ <div class="card mb-3" style=" height: 60px; border-color: #87dbf0">
+    <div class="card-body">
+      <h2 class="text-center"> Your Reviews: </h2><br />
+    </div>
+</div>
+
+ <blockquote class="blockquote">
+   <br /> <ul>
+        <% @user.reviews.each do |i| %>
+            <div class="card text-grey mb-3" style="width: 90rem; background-color: #87dbf0">
+            <div class="card-header"><%= i.restaurant.name %></div>
+                <div class="card-body">
+                    <p class="card-text"> <%= i.message %> | <%= i.stars %> &#9733</p>
+                     <footer class="blockquote-footer text-right"> <%= i.created_at.strftime("%b-%e-%Y")%> </footer><br /> 
+                        <% if i.user.id == current_user.id %>
+                        <h6> <%= link_to "Edit Review", edit_restaurant_review_path(@user, i)%> | <%= link_to("Delete Review", @review, method: :delete, data:{confirm: "Do you really want to delete this?"}) %></h6>
+                        <% end %>
+                </div>
+            </div>
+        <% end %>
+    </ul>
+</blockquote>

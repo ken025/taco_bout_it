@@ -10,6 +10,7 @@
 
       <% if user_signed_in? %>
           <li> <%= link_to 'Restaurants', restaurants_path, class: "nav-link" %> </li>
+          <li> <%= link_to "View your Reviews", user_path(current_user), class: "nav-link" %> </li>
         
       <% else %>
           <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
