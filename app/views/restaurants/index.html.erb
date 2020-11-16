@@ -2,10 +2,12 @@
 <%= form_tag(restaurants_path, method: :get) do %>
     <select name="search">
       <option value="">All</option>
-      <% Restaurant.all.each.uniq do |rest| %>
+      <%# collect and call a unique on the result %>
+      <% Restaurant.all.each do |rest| %>
         <option value="<%= rest.location %>"><%= rest.location %></option>
       <% end %>
     </select>
+
 <%= submit_tag ("Search"), class: "btn btn-outline-secondary btn-sm" %>
 <% end %>
 

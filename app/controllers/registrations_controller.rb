@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-
+#overwriting the devise's default strong params to include: name, username and image
     private
 
     def sign_up_params

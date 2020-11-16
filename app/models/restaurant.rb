@@ -19,4 +19,4 @@ class Restaurant < ApplicationRecord
             Restaurant.all
         end 
     end 
-end
+end 
