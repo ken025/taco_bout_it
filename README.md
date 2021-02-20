@@ -1,6 +1,8 @@
 # Welcome to: Lets Taco 'Bout It
 A web application designed to give users the ability to add their favorite restaurants and review them or just browse through the available restaurants and their reviews. 
 
+[Try it out](https://agile-ridge-60021.herokuapp.com/)
+
 - The users will be able to create an account to access the application 
 - Once the account is created, they will be able to add restaurant and reviews and edit and delete only their own
 - They will be able to access all other restaurants created and look through their reviews
